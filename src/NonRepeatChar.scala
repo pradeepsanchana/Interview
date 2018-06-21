@@ -9,6 +9,7 @@ object NonRepeatChar {
     for(i <-0 to s.length-1){
       if(!m.isEmpty && m.contains(s.charAt(i))){
         var c = m.get(s.charAt(i)).get
+
         m(s.charAt(i)) = c+1
       } else {
 
@@ -24,7 +25,7 @@ object NonRepeatChar {
     ' '
   }
   def main(args: Array[String]) {
-    var s = "aabcb"
+    var s = "aabcbb"
     println("non repeating char:"+nonRepeatChar(s))
   }
 
