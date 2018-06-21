@@ -6,33 +6,34 @@ import scala.collection.mutable.ListBuffer
 object RemoveSameColor {
   def main(args: Array[String]) = {
     var a = ListBuffer[Char]('R', 'G', 'B', 'B', 'G', 'R', 'Y')
-    removeColors(a).foreach(print)
+    print(removeColors(a))
     println()
     var b = ListBuffer[Char]('R', 'G', 'G','B', 'B', 'G','G', 'R', 'Y')
-    removeColors(b).foreach(print)
+    println(removeColors(b))
+    var c = ListBuffer[Char]('Y', 'R', 'G', 'G','R', 'R', 'G','G', 'R', 'Y')
+    println(removeColors(c))
 
   }
 
-  def removeColors(a: ListBuffer[Char]): ListBuffer[Char] = {
+  def removeColors(a: ListBuffer[Char]): Int = {
     reRemove(a, 0, a.length - 1)
   }
 
-  def reRemove(a: ListBuffer[Char], s: Int, e: Int): ListBuffer[Char] = {
+  def reRemove(a: ListBuffer[Char], s: Int, e: Int):Int = {
     if (nosameColors(a)) {
-      return a
+      return 0
     }
-    var l = a.length
-    var i =0
-    for (i <- 0 to l - 2) {
+    var l = 0
+    for (i <- 0 to a.length - 2) {
       if (a(i) == a(i + 1)) {
-        a.remove(i)
-        a.remove(i)
-        return reRemove(a, 0, a.length - 1)
+        l = i
       }
-
     }
-    return ListBuffer()
-    //reRemove(a, 0, a.length - 1)
+
+    a.remove(l)
+    // after removing the l emelmet l+1 element in the original wil come to l position so  remove l position again
+    a.remove(l)
+    return 1 + reRemove(a, 0, a.length - 1)
   }
 
   def nosameColors(a: ListBuffer[Char]): Boolean = {
