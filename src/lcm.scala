@@ -5,6 +5,7 @@ import scala.collection.mutable.HashMap
  */
 object lcm {
   def main(args: Array[String]) {
+    println(gcd(20,30))
     println(getLcm(20,30))
     println(getLcm(40,30))
     println(getLcm(getLcm(20,30),40))
@@ -19,8 +20,10 @@ object lcm {
     var finalV = HashMap[Int,Int]()
     for(i <- l.keysIterator ){
       p = l(i)
-      q = m(i)
-      m.remove(i)
+      if( m.contains(i)){
+        q = m(i)
+        m.remove(i)
+      }
       finalV += (i -> Math.max(p,q))
     }
     finalV ++= m
@@ -53,5 +56,11 @@ object lcm {
     ret
 
   }
+   def gcd(x:Int, y:Int):Int= {
+     if(y!=0 )
+         return gcd(y,x%y)
+       else
+         return x
+   }
 
 }
