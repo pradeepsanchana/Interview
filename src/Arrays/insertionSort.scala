@@ -25,6 +25,7 @@ object insertionSort {
 
   }
   def insert2(x:Array[Int]):Unit ={
+
     for(i<- 1 to x.length-1){
       var p = 0
       for (j<-0 to i-1

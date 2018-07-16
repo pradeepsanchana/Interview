@@ -1,14 +1,8 @@
-package recursion
+import java.io._
 
-/**
- * Created by pradeepsanchana on 09/07/18.
- */
-object BiggerIsGratter {
-  var next = false
+object Solution2 {
 
-  def main(args: Array[String]) {
-    println(biggerIsGreater("dkhc"))
-  }
+
   def biggerIsGreater(a:String):String = {
     var orig =a
     if(a.sorted(Ordering.Char.reverse) == orig) {
@@ -23,22 +17,41 @@ object BiggerIsGratter {
   def getNextGrater(a:String):String ={
     var c = a.toCharArray
     var i =a.length -1
-    var j = a.length -1
-    while(a(i) < a(i-1) && i>0){
+
+    while(c(i) < c(i-1) && i>0){
       i -=1
     }
-    while(a(i-1) > a(j) && j>0){
-      j -=1
+    var x = c(i-1)
+    var min = i
+    for(j<- i+1 to  a.length-1){
+      if (c(j) >= x && c(j) <= c(min))
+      {
+        min = j;
+      }
     }
     var tmp = c(i-1)
-    c(i-1) = c.charAt((j))
-    c(j) = tmp
+    c(i-1) = c(min)
+    c(min) = tmp
 
     return c.mkString.substring(0,i) + c.mkString.substring(i).sorted
 
 
   }
+  def main(args: Array[String]) {
+    val stdin = scala.io.StdIn
 
+    val printWriter = new PrintWriter("./abc.txt")
 
+    val T = stdin.readLine.trim.toInt
 
+    for (r <- 1 to T) {
+      val w = stdin.readLine
+
+      val result = biggerIsGreater(w)
+
+      printWriter.println(result)
+    }
+
+    printWriter.close()
+  }
 }
