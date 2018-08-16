@@ -12,7 +12,7 @@ object IsRotationArray {
       i +=1
     }
     if(a(i) == s){
-      j= i;
+      j= i
     }
 
     if(i == a.length){

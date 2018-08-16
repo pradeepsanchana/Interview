@@ -9,10 +9,10 @@ object CCupC1 {
       if((check & 1<<(i-'a'))>0) {
         ret = false
       }
-        check = check | (1<<(i-'a'))
-      }
-        ret
+      check = check | (1<<(i-'a'))
     }
+    ret
+  }
 
   def permute(str1:String,str2: String) ={
     str1.toCharArray.sorted.sameElements(str2.toCharArray.sorted)
