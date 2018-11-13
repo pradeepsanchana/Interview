@@ -20,8 +20,13 @@ object SolrPattern {
   def extractShardId(nodeName: String): String = {
     val pattern = """([a-z]+[0-9]+\-?[a-z]*\-?solr\-?node\-?[0-9]+\-?[ab]\-?[0-9]+.*):.*""".r
 
-    val pattern(shardId) = nodeName
-    shardId
+   // val pattern(shardId) = nodeName
+  //  shardId
+
+    nodeName match {
+      case pattern => "i am here"
+
+    }
   }
 
 }

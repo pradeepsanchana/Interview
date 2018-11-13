@@ -5,7 +5,8 @@ package recursion
  */
 object Permutations {
   def main(args:Array[String]):Unit ={
-    getPermute(Array(1,2,3))
+
+    getPermute(Array(1,2,3,1))
   }
   def getPermute(a:Array[Int]):Unit = {
     var b= new Array[Int](a.length)

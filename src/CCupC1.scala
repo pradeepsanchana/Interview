@@ -26,22 +26,30 @@ object CCupC1 {
     var cstr = ""
     var c =1
     var last:Char = ' '
+    last = str(str.length-1)
     for(j <-0 to str.length-2) {
-      last = str(j + 1)
       if (str(j) == str(j + 1)) {
         c += 1
       }
       else {
-        cstr += str(j) + c.toString
+        if(c == 1){
+          cstr += str(j)
+        } else{
+          cstr += str(j) + c.toString
+        }
         c = 1
       }
     }
-    cstr += last + c.toString
+    if(c == 1){
+      cstr += last
+    } else{
+      cstr += last + c.toString
+    }
     if(str.length  < cstr.length){
-      return str
+       str
     }
     else {
-      return cstr
+      cstr
     }
   }
 
@@ -94,6 +102,8 @@ object CCupC1 {
 
   def main(args: Array[String]) {
     var a = "abcdea"
+    var a4= "abaabbbc"
+    println("a:"+a4+":compress :" + compressString(a4))
     println("uniq:"+a+":" +isUnique(a))
     println("uniq:"+"abcde"+":" +isUnique("abcde"))
     var a1= "abcdef"
@@ -101,8 +111,6 @@ object CCupC1 {
     println("a:"+a1+": is permute of b:" +b1+ ":"+ permute(a1,b1))
     var a3= "Mr Pradeep San  "
     println("a:"+a3+": replace space with %20:" + replace(a3))
-    var a4= "aaaaabbbcabbdddccd"
-    println("a:"+a4+":compress :" + compressString(a4))
     a4 = "abcdeff"
     println("a:"+a4+":compress :" + compressString(a4))
     a4 = "aabbccddeeff"
