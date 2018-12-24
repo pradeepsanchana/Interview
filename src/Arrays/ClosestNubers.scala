@@ -4,13 +4,13 @@ package Arrays
  */
 object ClosestNubers {
   def main(args: Array[String]) {
-    maxCircle(Array(Array(1,2),Array(3,4),Array(2,3)))
+    //maxCircle(Array(Array(1,2),Array(3,4),Array(2,3)))
     //maxCircle(Array(Array(1000000000,23),Array(11,3778),Array(7,47),Array(11,1000000000)))
     //println(countingValleys(10,"UDUUUDUDDD"))
     //println(countingValleys(1000000,""))
 
     //println(jumpingOnClouds( Array(0,0,1,0,0,1,0)))
-    //println(sockMerchant(9,Array(10,20, 20, 10, 10, 30, 50, 10, 20)))
+    println(sockMerchant(9,Array(10,20, 20, 10, 10, 30, 50, 10, 20)))
 //    val (x,y) = closestNumbers(Array(-20, -3916237, -357920 ,-3620601, 7374819 ,-7330761, 30 ,6246457, -6461594, 266854 ))
 //    print(x + " " + y)
   }
@@ -39,8 +39,8 @@ object ClosestNubers {
       }
     }
     for(i<-h.keySet){
-
-        c += h(i) / 2
+        if(h(i) >= 2)
+        c += 1
     }
     c
 
