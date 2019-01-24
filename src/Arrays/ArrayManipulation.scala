@@ -34,7 +34,7 @@ object ArrayManipulation {
     }
     res1.foreach(println)
 */
-
+/*
     //sortWith(_(1) < _(1))
     var b = queries.sortWith(_(0) < _(0))
     for(i<-0 to b.length-1){
@@ -63,7 +63,61 @@ object ArrayManipulation {
     }
     println(m)
     m
+*/
+ /* var b = queries.sortWith(_(0) < _(0))
+    for(i<-0 to b.length-1){
+      println(b(i)(0)+ " "+ b(i)(1) + " " + b(i)(2))
+    }
 
+    var res = new Array[Long](b.length)
+    var m = 0L
+    //res(0) = b(0)(2)
+    for(i<-0 to b.length-1){
+      res(i) = b(i)(2)
+    }
+    for(i<-1 to b.length-1){
+      for(j<-0 to i-1){
+        if(b(j)(1) >= b(i)(0)){
+//          res(i) = Math.max(res(i), b(i)(2) + b(j)(2) )
+          res(i) = Math.max(res(i), res(i) + b(j)(2) )
+        }
+      }
+    }
+    res.foreach(print)
+    println()
+    println(res.max)
+    res.max
+    */
+    if(n > queries.length){
+      var b = queries.sortWith(_(0) < _(0))
+      /*for(i<-0 to b.length-1){
+        println(b(i)(0)+ " "+ b(i)(1) + " " + b(i)(2))
+      }*/
+      var res = new Array[Int](b.length)
+      var m = 0L
+      //res(0) = b(0)(2)
+      for(i<-0 to b.length-1){
+        res(i) = b(i)(2)
+      }
+      var g =0
+      for(i<-1 to (b.length-1)/2){
+        for(j<-0 to i-1 if(b(j)(1) >= b(i)(0))){
+            res(i) = Math.max(res(i), res(i) + b(j)(2) )
+            m = Math.max(m,res(i))
+           g+=1
+        }
+        println(g+" "+m)
+      }
+      m
+    } else {
+      var res1 = new Array[Long](n)
+      for(i<-0 to queries.length-1){
+        for(j<-queries(i)(0) to queries(i)(1)){
+          res1(j-1) +=queries(i)(2)
+        }
+      }
+      res1.max
+    }
   }
 
   def main(args: Array[String]) {
